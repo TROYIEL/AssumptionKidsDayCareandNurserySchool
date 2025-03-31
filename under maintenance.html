@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Under Maintenance | Assumption Kids</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="img/logo_G5Z_icon.ico" rel="icon" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Nunito&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+        background: #f8f9fa;
+        font-family: 'Nunito', sans-serif;
+      }
+      .container {
+        background: white;
+        padding: 50px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      h1 {
+        font-size: 36px;
+        color: #17A2B8;
+      }
+      p {
+        font-size: 18px;
+        color: #333;
+      }
+      .countdown {
+        font-size: 24px;
+        font-weight: bold;
+        color: #17A2B8;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <div class="container">
+      <img src="img/logo.png" alt="Assumption Kids Logo" width="150" />
+      <h1>We're Under Maintenance</h1>
+      <p>We're making some updates to provide a better experience. Please check back soon!</p>
+      <div class="countdown" id="countdown">We'll be back in: <span id="timer"></span></div>
+    </div>
+    <script>
+      function startCountdown(duration) {
+        let timer = duration;
+        let countdownElement = document.getElementById("timer");
+        
+        function updateCountdown() {
+          let days = Math.floor(timer / (24 * 60 * 60));
+          let hours = Math.floor((timer % (24 * 60 * 60)) / 3600);
+          let minutes = Math.floor((timer % 3600) / 60);
+          let seconds = timer % 60;
+          countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+          
+          if (timer > 0) {
+            timer--;
+            setTimeout(updateCountdown, 1000);
+          }
+        }
+        updateCountdown();
+      }
+      startCountdown(5 * 24 * 60 * 60);
+    </script>
+  </body>
+</html>
